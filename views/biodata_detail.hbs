@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <div>
+        <table class="table table-striped" id="mytable">
+          <thead>
+            <tr>
+              {{!-- <th>Biodata ID</th> --}}
+              <th>Nama</th>
+              <th>Tempat, Tanggal Lahir</th>
+              <th>Alamat</th>
+              <th>Email</th>
+              <th>No Hp Siswa</th>
+              <th>Agama</th>
+              <th>Anak Ke</th>
+              <th>Nama Ayah</th>
+              <th>Nama Ibu</th>
+              <th>No Hp (Ayah/Ibu)</th>
+              <th>Alamat Orang TUa</th>
+              <th>Pekerjaan Ayah</th>
+              <th>Pekerjaan Ibu</th>
+              <th>Jenis Kelamin</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+             {{#each results}}
+            <tr>
+              {{!-- <td>{{ biodata_id }}</td> --}}
+              <td>{{ nama }}</a></td>
+              <td>{{ ttl }}</td>
+              <td>{{ alamat }}</td>
+              <td>{{ email }}</td>
+              <td>{{ no_hp_siswa }}</td>
+              <td>{{ agama }}</td>
+              <td>{{ anak_ke }}</td>
+              <td>{{ nama_ayah }}</td>
+              <td>{{ nama_ibu }}</td>
+              <td>{{ no_hp_ortu }}</td>
+              <td>{{ alamat_ortu }}</td>
+              <td>{{ pekerjaan_ayah }}</td>
+              <td>{{ pekerjaan_ibu }}</td>
+              <td>{{ jenis_kelamin }}</td>
+              <td>
+                <a href="javascript:void(0);" class="btn btn-sm btn-info edit" data-id="{{ biodata_id }}" data-nama="{{ nama }}" data-ttl="{{ ttl }}" data-alamat="{{ alamat }}" data-email="{{ email }}" data-ttl="{{ ttl }}" data-no_hp_siswa="{{ no_hp_siswa }}" data-agama="{{ agama }}" data-anak_ke="{{ anak_ke }}" data-nama_ayah="{{ nama_ayah }}" data-nama_ibu="{{ nama_ibu }}" data-no_hp_ortu="{{ no_hp_ortu }}" data-alamat_ortu="{{ alamat_ortu }}" data-pekerjaan_ayah="{{ pekerjaan_ayah }}" data-pekerjaan_ibu="{{ pekerjaan_ibu }}" data-jenis_kelamin="{{ jenis_kelamin }}">Edit</a>
+                <a href="javascript:void(0);" class="btn btn-sm btn-danger delete" data-id="{{ biodata_id }}">Delete</a>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+    </div>
+</body>
+</html>

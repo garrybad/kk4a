@@ -1,0 +1,317 @@
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Biodata</title>
+  <link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+  <style>
+    @font-face{
+      font-family: 'neue';
+      src: url(assets/fonts/Bebas-Neue-Regular.ttf) format('opentype');
+    }
+
+    @font-face{
+      font-family: 'grace';
+      src: url(assets/fonts/Covered-By-Your-Grace-Regular.ttf) format('opentype');
+    }
+  </style>
+</head>
+<body>
+  <div class="upper" style="background-color: #333333; height: 7%;">
+    <div style="display: flex;">
+      <div class="samping" style="
+      color: white; 
+      margin-left: 1%;
+      margin-top: 5px;
+      font-size: 22px;">Biodata</div>
+      <button data-toggle="modal" data-target="#myModalAdd" style="
+      margin-left: 87%;
+      font-size: 15px;
+      border-radius: 5px;
+      border-color: white;
+      border-style: none;
+      margin-top: 5px;
+      width: 75px;
+      height: 32px;
+      cursor: pointer;
+      border: none;
+      outline: none;">Add New</button>
+    </div>
+  </div>
+  <div class="container" style="overflow-x:auto;">
+    <h2 class="judul" style="text-align: center; margin-top: 2%; margin-bottom: 2%;">List Biodata</h2>
+    <table class="table table-striped" id="mytable">
+      <thead>
+        <tr>
+          {{!-- <th>Biodata ID</th> --}}
+          <th>Nama</th>
+          <th>Tempat, Tanggal Lahir</th>
+          <th>Alamat</th>
+          <th>Email</th>
+          <th>No Hp Siswa</th>
+          <th>Agama</th>
+          <th>Anak Ke</th>
+          <th>Nama Ayah</th>
+          <th>Nama Ibu</th>
+          <th>No Hp (Ayah/Ibu)</th>
+          <th>Alamat Orang Tua</th>
+          <th>Pekerjaan Ayah</th>
+          <th>Pekerjaan Ibu</th>
+          <th>Jenis Kelamin</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+         {{#each results}}
+        <tr>
+          {{!-- <td>{{ biodata_id }}</td> --}}
+          <td><a href="/detail">{{ nama }}</a></td>
+          {{!-- <td>{{ nama }}</td> --}}
+          <td>{{ ttl }}</td>
+          <td>{{ alamat }}</td>
+          <td>{{ email }}</td>
+          <td>{{ no_hp_siswa }}</td>
+          <td>{{ agama }}</td>
+          <td>{{ anak_ke }}</td>
+          <td>{{ nama_ayah }}</td>
+          <td>{{ nama_ibu }}</td>
+          <td>{{ no_hp_ortu }}</td>
+          <td>{{ alamat_ortu }}</td>
+          <td>{{ pekerjaan_ayah }}</td>
+          <td>{{ pekerjaan_ibu }}</td>
+          <td>{{ jenis_kelamin }}</td>
+          <td>
+            <a href="javascript:void(0);" class="btn btn-sm btn-info edit" data-id="{{ biodata_id }}" data-nama="{{ nama }}" data-ttl="{{ ttl }}" data-alamat="{{ alamat }}" data-email="{{ email }}" data-ttl="{{ ttl }}" data-no_hp_siswa="{{ no_hp_siswa }}" data-agama="{{ agama }}" data-anak_ke="{{ anak_ke }}" data-nama_ayah="{{ nama_ayah }}" data-nama_ibu="{{ nama_ibu }}" data-no_hp_ortu="{{ no_hp_ortu }}" data-alamat_ortu="{{ alamat_ortu }}" data-pekerjaan_ayah="{{ pekerjaan_ayah }}" data-pekerjaan_ibu="{{ pekerjaan_ibu }}" data-jenis_kelamin="{{ jenis_kelamin }}">Edit</a>
+            <a href="javascript:void(0);" class="btn btn-sm btn-danger delete" data-id="{{ biodata_id }}">Delete</a>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+	<!-- Add New Product Modal-->
+	  <form action="/save" method="post">
+        <div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Form Biodata</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+               <div class="form-group">
+                   <input type="text" name="nama" class="form-control" placeholder="Nama" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="ttl" class="form-control" placeholder="Tempat, Tanggal Lahir" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="alamat" class="form-control" placeholder="Alamat" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="email" class="form-control" placeholder="Email" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="no_hp_siswa" class="form-control" placeholder="No Hp Siswa" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="agama" class="form-control" placeholder="Agama" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="anak_ke" class="form-control" placeholder="Anak Ke" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="nama_ayah" class="form-control" placeholder="Nama Ayah" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="nama_ibu" class="form-control" placeholder="Nama Ibu" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="no_hp_ortu" class="form-control" placeholder="No Hp (Ayah/Ibu)" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="alamat_ortu" class="form-control" placeholder="Alamat Ortu" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="pekerjaan_ayah" class="form-control" placeholder="Pekerjaan Ayah" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="pekerjaan_ibu" class="form-control" placeholder="Pekerjaan Ibu" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="jenis_kelamin" class="form-control" placeholder="Jenis Kelamin" required>
+               </div>
+             </div>
+             <div style="text-align: center; margin-bottom: 5%;">
+               {{!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+               <button type="submit" class="btn btn-primary" style="width: 140px;">Save</button>
+             </div>
+           </div>
+         </div>
+        </div>
+	 </form>
+
+	 <!-- Edit Product Modal-->
+   <form action="/update" method="post">
+       <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit Biodata</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+               <div class="form-group">
+                   <input type="text" name="nama" class="form-control" placeholder="Nama" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="ttl" class="form-control" placeholder="Tempat, Tanggal Lahir" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="alamat" class="form-control" placeholder="Alamat" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="email" class="form-control" placeholder="Email" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="no_hp_siswa" class="form-control" placeholder="No Hp Siswa" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="agama" class="form-control" placeholder="Agama" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="anak_ke" class="form-control" placeholder="Anak Ke" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="nama_ayah" class="form-control" placeholder="Nama Ayah" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="nama_ibu" class="form-control" placeholder="Nama Ibu" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="no_hp_ortu" class="form-control" placeholder="No Hp (Ayah/Ibu)" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="alamat_ortu" class="form-control" placeholder="Alamat Ortu" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="pekerjaan_ayah" class="form-control" placeholder="Pekerjaan Ayah" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="pekerjaan_ibu" class="form-control" placeholder="Pekerjaan Ibu" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="jenis_kelamin" class="form-control" placeholder="Jenis Kelamin" required>
+               </div>
+            </div>
+            <div style="text-align: center; margin-bottom: 5%;">
+              <input type="hidden" name="id" class="biodata_id">
+              {{!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+              <button type="submit" class="btn btn-primary" style="width: 140px;">Update</button>
+            </div>
+          </div>
+        </div>
+       </div>
+  </form>
+
+	 <!-- Delete Product Modal-->
+ 	  <form id="add-row-form" action="/delete" method="post">
+ 	     <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ 	        <div class="modal-dialog">
+ 	           <div class="modal-content">
+ 	               <div class="modal-header">
+									 	<h5 class="modal-title" id="myModalLabel">Delete Biodata</h5>
+ 	                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+ 	               </div>
+ 	               <div class="modal-body">
+												 <strong>Are You Sure To Delete This Data?</strong>
+ 	               </div>
+ 	               <div class="modal-footer">
+									 		<input type="hidden" name="biodata_id" class="form-control biodata_id2" required>
+ 	                   	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+ 	                  	<button type="submit" class="btn btn-success">Delete</button>
+ 	               </div>
+ 	      			</div>
+ 	        </div>
+ 	     </div>
+ 	 </form>
+
+<script src="/assets/js/jquery-3.3.1.js"></script>
+<script src="/assets/js/bootstrap.js"></script>
+<script>
+    $(document).ready(function(){
+			//showing data to modal for edit record
+      $('#mytable').on('click','.edit',function(){
+        var biodata_id = $(this).data('id');
+        var nama = $(this).data('nama');
+        var ttl = $(this).data('ttl');
+        var alamat = $(this).data('alamat');
+        var email = $(this).data('email');
+        var no_hp_siswa = $(this).data('no_hp_siswa');
+        var agama = $(this).data('agama');
+        var anak_ke = $(this).data('anak_ke');
+        var nama_ayah = $(this).data('nama_ayah');
+        var nama_ibu = $(this).data('nama_ibu');
+        var no_hp_ortu = $(this).data('no_hp_ortu');
+        var alamat_ortu = $(this).data('alamat_ortu');
+        var pekerjaan_ayah = $(this).data('pekerjaan_ayah');
+        var pekerjaan_ibu = $(this).data('pekerjaan_ibu');
+        var jenis_kelamin = $(this).data('jenis_kelamin');
+        $('#EditModal').modal('show');
+        $('.nama').val(nama);
+        $('.ttl').val(ttl);
+        $('.alamat').val(alamat);
+        $('.email').val(email);
+        $('.no_hp_siswa').val(no_hp_siswa);
+        $('.agama').val(agama);
+        $('.anak_ke').val(anak_ke);
+        $('.nama_ayah').val(nama_ayah);
+        $('.nama_ibu').val(nama_ibu);
+        $('.no_hp_ortu').val(no_hp_ortu);
+        $('.alamat_ortu').val(alamat_ortu);
+        $('.pekerjaan_ayah').val(pekerjaan_ayah);
+        $('.pekerjaan_ibu').val(pekerjaan_ibu);
+        $('.jenis_kelamin').val(jenis_kelamin);
+        $('.biodata_id').val(biodata_id);
+      });
+			//showing modal for delete record
+			$('#mytable').on('click','.delete',function(){
+        var biodata_id = $(this).data('id');
+        $('#DeleteModal').modal('show');
+        $('.biodata_id2').val(biodata_id);
+      });
+
+    });
+</script>
+</body>
+</html>
